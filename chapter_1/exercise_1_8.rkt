@@ -24,3 +24,18 @@
 
 (cube-root 9)
 ; 2.0801035255095734
+
+
+; And in block structure
+(define (cube-root x)
+  (define (improve x y)
+    ( / (+ (/ x (* y y)) (* 2 y)) 3))
+
+  (define (stop-iter? old-y new-y)
+    (< (abs (- old-y new-y)) 0.0001))
+
+  (define (cube-root-iter x y)
+    (if (stop-iter? y (improve x y))
+        y
+        (cube-root-iter x (improve x y))))
+  (cube-root-iter x 1.0))
