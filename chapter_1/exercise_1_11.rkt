@@ -43,3 +43,17 @@
 (f 3) ; 3
 (f 4) ; 11
 (f 5) ; 25
+
+
+; Alternative definition of the iterative version
+
+(define (f-iter a b c count)
+  (define (x) (+ a (* 2 b) (* 3 c)))
+  (if (= count 3)
+       (x)
+       (f-iter (x) a b (- count 1))))
+
+(define (f n)
+    (if (< n 3)
+        n
+        (f-iter 2 1 0 n)))
