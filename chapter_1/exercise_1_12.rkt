@@ -15,3 +15,13 @@ computes elements of Pascal’s triangle by means of a recursive process.
 
 |#
 
+(define (binom n k)
+  (if (or (= k 0) (= k n))
+      1
+      (+ (binom (- n 1) (- k 1)) (binom (- n 1) k))))
+
+(binom 1 1) ;1
+(binom 2 1) ;2
+(binom 3 2) ;3
+(binom 4 3) ;4
+(binom 5 4) ;5
